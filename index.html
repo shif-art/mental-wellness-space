@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mental Wellness Space</title>
+
+<style>
+:root {
+  --mint: #c8f2e1;
+  --lavender: #e6d9ff;
+  --soft-white: #f9fbfa;
+  --text: #34495e;
+  --card: #ffffff;
+  --shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--mint), var(--lavender));
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+}
+
+h1, h2 {
+  font-weight: 600;
+}
+
+p {
+  max-width: 700px;
+  margin: 15px auto;
+  line-height: 1.6;
+}
+
+button {
+  border: none;
+  padding: 14px 26px;
+  border-radius: 40px;
+  background: var(--lavender);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #dccbff;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 25px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.option {
+  background: var(--soft-white);
+  padding: 15px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.option:hover {
+  transform: scale(1.05);
+}
+
+/* Popup */
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+#popupContent {
+  background: var(--soft-white);
+  padding: 40px;
+  border-radius: 30px;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+/* Cute floating animals */
+.animal {
+  position: absolute;
+  font-size: 40px;
+  animation: float 12s infinite linear;
+  opacity: 0.8;
+}
+
+.cat { left: 5%; animation-duration: 14s; }
+.dog { right: 5%; animation-duration: 16s; }
+.rabbit { left: 45%; animation-duration: 18s; }
+
+@keyframes float {
+  0% { top: 100%; }
+  100% { top: -10%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Needs content */
+#needsContent ul {
+  text-align: left;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+li {
+  margin: 10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Cute animals -->
+<div class="animal cat">🐱</div>
+<div class="animal dog">🐶</div>
+<div class="animal rabbit">🐰</div>
+
+<!-- 1️⃣ Welcome -->
+<section>
+  <h1>Mental Wellness Space – A Safe Place for Your Mind</h1>
+  <p>Your emotions are valid. Take a moment to check in with yourself.</p>
+  <button onclick="document.getElementById('checkin').scrollIntoView({behavior:'smooth'})">
+    Begin Emotional Check-In
+  </button>
+</section>
+
+<!-- 2️⃣ Emotional Check-In -->
+<section id="checkin">
+  <div class="card">
+    <h2>How are you feeling today?</h2>
+    <div class="options">
+      <div class="option" onclick="showQuote('Happy')">😊 Happy</div>
+      <div class="option" onclick="showQuote('Anxious')">😟 Anxious</div>
+      <div class="option" onclick="showQuote('Sad')">😔 Sad</div>
+      <div class="option" onclick="showQuote('Angry')">😡 Angry</div>
+      <div class="option" onclick="showQuote('Neutral')">😐 Neutral</div>
+      <div class="option" onclick="showQuote('Tired')">😴 Tired</div>
+      <div class="option" onclick="showQuote('Overwhelmed')">😶 Overwhelmed</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3️⃣ Quote Popup -->
+<div id="popup">
+  <div id="popupContent">
+    <p id="quoteText"></p>
+    <p>🌿 Breathe gently</p>
+    <button onclick="closePopup()">Continue</button>
+  </div>
+</div>
+
+<!-- 4️⃣ What is Mental Health -->
+<section>
+  <div class="card">
+    <h2>What Is Mental Health? 🧠</h2>
+    <p>
+      Mental health refers to our emotional, psychological, and social well-being.
+      It affects how we think, feel, behave, handle stress, relate to others, and
+      make decisions.
+    </p>
+    <p>
+      Mental health is not only about illness — it’s about emotional balance,
+      resilience, and feeling connected. Just like physical health, it needs care,
+      attention, and compassion. ❤️🌬️🍃
+    </p>
+  </div>
+</section>
+
+<!-- 5️⃣ Why Important -->
+<section>
+  <div class="card">
+    <h2>Why Mental Health Matters</h2>
+    <p>
+      Good mental health supports clear thinking, emotional control, better sleep,
+      strong relationships, confidence, and resilience during tough times.
+    </p>
+    <p><em>“A calm mind creates a strong life.”</em></p>
+  </div>
+</section>
+
+<!-- 6️⃣ User Needs -->
+<section>
+  <div class="card">
+    <h2>What are you looking for today?</h2>
+    <div class="options">
+      <div class="option" onclick="showNeeds('calm')">🧘 Tips to Stay Calm</div>
+      <div class="option" onclick="showNeeds('mindfulness')">🌿 Mindfulness Practices</div>
+      <div class="option" onclick="showNeeds('exercise')">🏃 Exercise Suggestions</div>
+      <div class="option" onclick="showNeeds('sleep')">😴 Better Sleep Habits</div>
+      <div class="option" onclick="showNeeds('journal')">📓 Journaling for Mental Health</div>
+    </div>
+    <div id="needsContent"></div>
+  </div>
+</section>
+
+<script>
+const quotes = {
+  Happy: "Joy is not a destination — it’s a moment you’re allowed to feel.",
+  Anxious: "You don’t have to control your thoughts. You just have to stop letting them control you.",
+  Sad: "Healing takes time, and asking for help is a brave first step.",
+  Angry: "Strong emotions pass — give yourself space to breathe.",
+  Neutral: "It’s okay to feel steady. Peace is still progress.",
+  Tired: "Rest is not laziness; it is self-respect.",
+  Overwhelmed: "Breathe. You are doing your best, and that is enough."
+};
+
+function showQuote(feeling) {
+  document.getElementById("quoteText").innerText = quotes[feeling];
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function showNeeds(type) {
+  const content = {
+    calm: [
+      "Take 5 slow breaths",
+      "Step away from your phone",
+      "Drink water",
+      "Stretch for 2 minutes",
+      "Listen to soft music"
+    ],
+    mindfulness: [
+      "Meditate gently and focus on your breath"
+    ],
+    exercise: [
+      "Yoga or tai chi for stress relief",
+      "Brisk walking or jogging outdoors",
+      "Dancing to your favorite music",
+      "Strength training",
+      "Swimming or water aerobics"
+    ],
+    sleep: [
+      "Establish a consistent sleep schedule",
+      "Create a bedtime routine",
+      "Avoid screens before bedtime",
+      "Make your sleep space comfortable and dark",
+      "Practice relaxation breathing"
+    ],
+    journal: [
+      "What am I grateful for today?",
+      "What’s been weighing on my mind?",
+      "Describe a happy memory",
+      "What are my goals for the next week?",
+      "Write a letter to yourself"
+    ]
+  };
+
+  let html = "<ul>";
+  content[type].forEach(item => {
+    html += `<li>${item}</li>`;
+  });
+  html += "</ul>";
+
+  document.getElementById("needsContent").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
